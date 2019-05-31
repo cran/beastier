@@ -1,0 +1,31 @@
+## ----setup, include = FALSE----------------------------------------------
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+
+## ----load_beastier, results='hide', warning=FALSE, error=FALSE, message=FALSE----
+library(beastier)
+
+## ------------------------------------------------------------------------
+beast2_options <- create_beast2_options(
+  input_filename = get_beastier_path("2_4.xml")
+)
+
+## ------------------------------------------------------------------------
+if (is_beast2_installed()) {
+
+  library(testthat)
+  
+  expect_false(file.exists(beast2_options$output_log_filename))
+  expect_false(file.exists(beast2_options$output_trees_filenames))
+  expect_false(file.exists(beast2_options$output_state_filename))
+
+  output <- run_beast2_from_options(beast2_options)
+
+  expect_true(length(output) > 40)
+  expect_true(file.exists(beast2_options$output_log_filename))
+  expect_true(file.exists(beast2_options$output_trees_filenames))
+  expect_true(file.exists(beast2_options$output_state_filename))
+}
+

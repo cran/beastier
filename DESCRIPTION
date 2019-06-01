@@ -1,7 +1,7 @@
 Package: beastier
 Type: Package
 Title: Call 'BEAST2'
-Version: 2.0.14
+Version: 2.0.15
 Authors@R: c(
     person("Richèl J.C.", "Bilderbeek", email = "richel@richelbilderbeek.nl", role = c("aut", "cre"), comment = c(ORCID = "0000-0003-1107-7049")),
     person("Joëlle", "Barido-Sottani", role = "rev", comment = "Joëlle reviewed the package for rOpenSci, see https://github.com/ropensci/onboarding/issues/209"),
@@ -27,7 +27,7 @@ Language: en-US
 VignetteBuilder: knitr
 SystemRequirements: BEAST2 (http://www.beast2.org/)
 NeedsCompilation: no
-Packaged: 2019-05-28 06:23:48 UTC; richel
+Packaged: 2019-06-01 09:23:40 UTC; richel
 Author: Richèl J.C. Bilderbeek [aut, cre]
     (<https://orcid.org/0000-0003-1107-7049>),
   Joëlle Barido-Sottani [rev] (Joëlle reviewed the package for rOpenSci,
@@ -35,4 +35,4 @@ Author: Richèl J.C. Bilderbeek [aut, cre]
   David Winter [rev] (David reviewed the package for rOpenSci, see
     https://github.com/ropensci/onboarding/issues/209)
 Repository: CRAN
-Date/Publication: 2019-05-31 10:00:03 UTC
+Date/Publication: 2019-06-01 22:20:34 UTC

@@ -1,4 +1,4 @@
-a67d5169eeb0edb78469939675108a54 *DESCRIPTION
+ec18dd438e8210ae0706f614f7bf39eb *DESCRIPTION
 040b37f08946cea72b179083d6406ed9 *NAMESPACE
 5d4b69856a24694aa256a572f6a8bed3 *R/are_beast2_input_lines.R
 6dfd14b839853a44095c149cde9e5eea *R/beastier.R
@@ -22,10 +22,10 @@ f1e89d87f62010757745ac7f9604c0b0 *R/create_random_alignment.R
 05d0c21659de5466cc1b7d5d6c3b93f7 *R/do_minimal_run.R
 0ffcb3a5caf97a8f900de004387522ce *R/files_exist.R
 8140307141a52a8b69c65391f16e9eff *R/get_alignment_ids.R
-6e4990ed31cbc763f37838fc6fe16b5c *R/get_default_beast2_bin_path.R
+78a650c2263a5de682c67ef93157a68e *R/get_default_beast2_bin_path.R
 d6235be6ab09d37e64628a03caf61596 *R/get_default_beast2_download_url.R
-db999b5cedbaffdd12cf427086862a5a *R/get_default_beast2_folder.R
-4bc3967be3511d331f05e4940281fe4a *R/get_default_beast2_jar_path.R
+a2e617ab0dae7dbd6a8e68cd900a6c5c *R/get_default_beast2_folder.R
+8b64c529f3cc763e3b91bf8d4ad87d29 *R/get_default_beast2_jar_path.R
 14218030d7b436c10b5e3179c7efe099 *R/get_default_beast2_path.R
 7ddf32b9b6d6c08f630c1ade35ea0468 *R/get_default_java_path.R
 21315d90d42ef2609a83ae9261ce3049 *R/get_duplicate_param_ids.R
@@ -40,7 +40,7 @@ bb21401b702dffb4b71c7be0d8a6b0be *R/is_beast2_input_file.R
 273bffa319255ab1b22311ddc9261093 *R/is_bin_path.R
 33963423914dd7907961f21467a1da13 *R/is_jar_path.R
 a9acc7076e6ec73c01c675e46c1212c0 *R/is_on_ci.R
-d6b4f4ecdc3ac2c873699e0b35dfa31d *R/run_beast2.R
+e7eab266c37c94891e4c645cc5a15b1d *R/run_beast2.R
 454832d66cc60145d207c62eb93cd939 *R/run_beast2_from_options.R
 9a51384dbbc5d73582b69ac49293065d *R/save_lines.R
 3289fa19b4c4743a97ffd0b8605cd620 *R/uninstall_beast2.R
@@ -92,9 +92,9 @@ ca726ca2a8e5add53f926e33cc8313cc *man/files_exist.Rd
 522335a740b68a692cb43accd2eb34e0 *man/get_alignment_ids.Rd
 700960db63ab1aed428eeb0b2102f30d *man/get_beastier_path.Rd
 001de36b02bdddc4f07686531e5b22ce *man/get_beastier_paths.Rd
-af9c63652d554d005e138cabeeab2a9a *man/get_default_beast2_bin_path.Rd
-b2d64e747f2eade8ad03153ab9d54d44 *man/get_default_beast2_folder.Rd
-83149e02d209bf9a1eb33eb2dcb63928 *man/get_default_beast2_jar_path.Rd
+18f11cf58a374f463e0ca0472cb7f2d3 *man/get_default_beast2_bin_path.Rd
+610bfb7738454cf59d34a89dd7d75f0c *man/get_default_beast2_folder.Rd
+df3ca538d57a7efbe3b6ae435118fc3c *man/get_default_beast2_jar_path.Rd
 146c4b1b89db541c72a11f1730df30d5 *man/get_default_beast2_path.Rd
 8a2d89c99fcea1f70f201fb7a5c3fa04 *man/get_default_java_path.Rd
 06da65ca4ef028106830d77e9fe6f026 *man/get_trees_filenames.Rd
@@ -106,7 +106,7 @@ b2d64e747f2eade8ad03153ab9d54d44 *man/get_default_beast2_folder.Rd
 b428bc38d93cc19e9e1f2b95a868ce18 *man/is_on_appveyor.Rd
 1a6e9b7e9ff758f9ec39798eb0ac26b7 *man/is_on_ci.Rd
 1bd58c528cd6ae013e927953fd44e41d *man/is_on_travis.Rd
-1dfb798257ec6d011266b65d8226cdfe *man/run_beast2.Rd
+57e71ce491d70c0197bb7a68e8e8b891 *man/run_beast2.Rd
 a80672fd72b76aa408b9a7b1458e9935 *man/run_beast2_from_options.Rd
 a6d2b74d416436de5633d054cd6d5ca4 *man/uninstall_beast2.Rd
 3c9409d15f1e7356003bd81aa52a7841 *vignettes/demo.Rmd

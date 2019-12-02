@@ -5,16 +5,18 @@
 #'   library(testthat)
 #'
 #'   expect_equal(
-#'     get_alignment_ids(get_beastier_path("2_4.xml")),
+#'     get_alignment_ids_from_xml_filename(get_beastier_path("2_4.xml")),
 #'     "test_output_0"
 #'   )
 #'   expect_equal(
-#'    get_alignment_ids(get_beastier_path("anthus_15_15.xml")),
+#'    get_alignment_ids_from_xml_filename(
+#'      get_beastier_path("anthus_15_15.xml")
+#'    ),
 #'    c("anthus_aco","anthus_nd2")
 #'  )
 #' @author Richèl J.C. Bilderbeek
 #' @export
-get_alignment_ids <- function(
+get_alignment_ids_from_xml_filename <- function( # nolint indeed a long function name, but I preferred to keep it: a normal user should use 'get_alignment_ids'
   xml_filename
 ) {
 

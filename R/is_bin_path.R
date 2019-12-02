@@ -9,14 +9,14 @@
 #'   if (is_beast2_installed()) {
 #'     expect_true(is_bin_path("beast"))
 #'     expect_true(is_bin_path("BEAST.exe"))
-#'     expect_false(is_bin_path("beast.jar"))
+#'     expect_false(is_bin_path("launcher.jar"))
 #'     expect_true(is_bin_path(get_default_beast2_bin_path()))
 #'     expect_false(is_bin_path(get_default_beast2_jar_path()))
 #'   }
 #' @export
 is_bin_path <- function(path) {
   !beautier::is_one_na(stringr::str_match(
-    path, "(.*/)?(beast|BEAST\\.exe)$")[1][1]
+    path, "(.*/)?(beast|BEAST(2)?\\.exe)$")[1][1]
   )
 }
 
@@ -30,10 +30,10 @@ is_bin_path <- function(path) {
 #'
 #'   expect_false(is_win_bin_path("beast"))
 #'   expect_true(is_win_bin_path("BEAST.exe"))
-#'   expect_false(is_win_bin_path("beast.jar"))
+#'   expect_false(is_win_bin_path("launcher.jar"))
 #' @noRd
 is_win_bin_path <- function(path) {
   !beautier::is_one_na(stringr::str_match(
-    path, "(.*/)?BEAST\\.exe$")[1][1]
+    path, "(.*/)?BEAST2?\\.exe$")[1][1]
   )
 }

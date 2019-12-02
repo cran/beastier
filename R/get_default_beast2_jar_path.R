@@ -11,7 +11,7 @@
 #'   if (is_beast2_installed() && rappdirs::app_dir()$os == "unix") {
 #'     expect_true(
 #'       grepl(
-#'         "beast/lib/beast.jar",
+#'         "beast/lib/launcher.jar",
 #'         get_default_beast2_jar_path()
 #'       )
 #'     )
@@ -21,11 +21,16 @@
 get_default_beast2_jar_path <- function(
   os = rappdirs::app_dir()$os
 ) {
-  check_os(os = os) # nolint internal function
-  # Windows has uppercase folder name
+  beastier::check_os(os)
+  # Windows    : BEAST/lib/beast.jar                                            # nolint
+  # Non-Windows: beast/lib/launcher.jar                                         # nolint
   beast_foldername <- "BEAST"
   if (os != "win") {
     beast_foldername <- "beast"
+  }
+  launcher_name <- "beast.jar"
+  if (os != "win") {
+    launcher_name <- "launcher.jar"
   }
 
   normalizePath(
@@ -33,7 +38,7 @@ get_default_beast2_jar_path <- function(
       rappdirs::user_data_dir(),
       beast_foldername,
       "lib",
-      "beast.jar"
+      launcher_name
     ),
     mustWork = FALSE
   ) # nolint internal function

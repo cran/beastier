@@ -3,14 +3,16 @@
 \name{create_beast2_validate_cmd_bin}
 \alias{create_beast2_validate_cmd_bin}
 \title{Creates the terminal command to validate a BEAST2 input file
-using a call to the \code{beast.jar} file}
+using a call to the \code{launcher.jar} file}
 \usage{
 create_beast2_validate_cmd_bin(input_filename,
   beast2_bin_path = get_default_beast2_bin_path())
 }
 \arguments{
 \item{input_filename}{the name of a BEAST2 input XML file.
-This file usually has an \code{.xml} extension.}
+This file usually has an \code{.xml} extension.
+Use \link{create_temp_input_filename} to create a temporary
+filename with that extension.}
 
 \item{beast2_bin_path}{name of the BEAST2 binary file
 (usually simply \code{beast}).
@@ -25,7 +27,7 @@ a character vector, of which the first element
 }
 \description{
 Creates the terminal command to validate a BEAST2 input file
-using a call to the \code{beast.jar} file
+using a call to the \code{launcher.jar} file
 }
 \examples{
   if (is_beast2_installed() && is_on_ci()) {

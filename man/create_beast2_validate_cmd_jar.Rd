@@ -3,14 +3,16 @@
 \name{create_beast2_validate_cmd_jar}
 \alias{create_beast2_validate_cmd_jar}
 \title{Creates the terminal command to validate a BEAST2 input file
-using a call to the \code{beast.jar} file}
+using a call to the \code{launcher.jar} file}
 \usage{
 create_beast2_validate_cmd_jar(input_filename,
   beast2_jar_path = get_default_beast2_jar_path())
 }
 \arguments{
 \item{input_filename}{the name of a BEAST2 input XML file.
-This file usually has an \code{.xml} extension.}
+This file usually has an \code{.xml} extension.
+Use \link{create_temp_input_filename} to create a temporary
+filename with that extension.}
 
 \item{beast2_jar_path}{name of the BEAST2 jar file
 (usually has a \code{.jar} extension).
@@ -25,15 +27,15 @@ a character vector, of which the first element
 }
 \description{
 Creates the terminal command to validate a BEAST2 input file
-using a call to the \code{beast.jar} file
+using a call to the \code{launcher.jar} file
 }
 \examples{
   if (is_beast2_installed() && is_on_ci()) {
     cmds <- create_beast2_validate_cmd_jar(
       input_filename = "input.xml"
     )
-    testit::assert(length(cmds) == 5)
-    testit::assert(cmds[2] == "-jar")
+    testit::assert(length(cmds) == 6)
+    testit::assert(cmds[2] == "-cp")
   }
 }
 \author{

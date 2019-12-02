@@ -5,18 +5,18 @@
 \title{Run BEAST2}
 \usage{
 run_beast2(input_filename,
-  output_log_filename = create_default_log_filename(input_filename,
-  beast2_path, verbose),
-  output_trees_filenames = create_default_trees_filenames(input_filename,
-  beast2_path, verbose), output_state_filename = tempfile(pattern =
-  "beastier_", fileext = ".xml.state"), rng_seed = NA, n_threads = NA,
-  use_beagle = FALSE, overwrite = TRUE,
-  beast2_working_dir = tempfile(pattern = "beast2_tmp_folder"),
+  output_log_filename = "output_log_filename_is_deprecated",
+  output_trees_filenames = "output_trees_filenames_is_deprecated",
+  output_state_filename = create_temp_state_filename(), rng_seed = NA,
+  n_threads = NA, use_beagle = FALSE, overwrite = TRUE,
+  beast2_working_dir = "beast2_working_dir_is_deprecated",
   beast2_path = get_default_beast2_path(), verbose = FALSE)
 }
 \arguments{
 \item{input_filename}{the name of a BEAST2 input XML file.
-This file usually has an \code{.xml} extension.}
+This file usually has an \code{.xml} extension.
+Use \link{create_temp_input_filename} to create a temporary
+filename with that extension.}
 
 \item{output_log_filename}{name of the .log file to create}
 
@@ -26,7 +26,9 @@ file. The number of alignments must equal the number of .trees
 filenames, else an error is thrown. Alignments are sorted alphabetically
 by their IDs}
 
-\item{output_state_filename}{name of the .xml.state file to create}
+\item{output_state_filename}{name of the \code{.xml.state} file to create.
+Use \link{create_temp_state_filename} to create a temporary
+filename with that extension.}
 
 \item{rng_seed}{the random number generator seed of the BEAST2 run.
 Must be a non-zero positive integer value or \link{NA}.
@@ -38,19 +40,21 @@ Use \link{NA} to use the BEAST2 default of 1.}
 \item{use_beagle}{use BEAGLE if present}
 
 \item{overwrite}{if TRUE: overwrite the \code{.log}
- and \code{.trees} files if one of these exists.
- If FALSE, BEAST2 will not be started if
- \itemize{
-   \item{the \code{.log} file exists}
-   \item{the \code{.trees} files exist}
-   \item{the \code{.log} file created by BEAST2 exists}
-   \item{the \code{.trees} files created by BEAST2 exist}
+and \code{.trees} files if one of these exists.
+If FALSE, BEAST2 will not be started if
+\itemize{
+  \item{the \code{.log} file exists}
+  \item{the \code{.trees} files exist}
+  \item{the \code{.log} file created by BEAST2 exists}
+  \item{the \code{.trees} files created by BEAST2 exist}
 }}
 
-\item{beast2_working_dir}{the folder BEAST2 will work in. This is
-an (empty) temporary folder by default. This allows to call
-BEAST2 in multiple parallel processes, as each process can have
-its own working directory}
+\item{beast2_working_dir}{a folder where BEAST2 can work in
+isolation.
+For each BEAST2 run, a new subfolder is created in that folder.
+Within this folder, BEAST2 is allowed to create all of its output files,
+without the risk of overwriting existing ones, allowing
+BEAST2 to run in multiple parallel processes.}
 
 \item{beast2_path}{name of either a BEAST2 binary file
 (usually simply \code{beast})
@@ -66,9 +70,7 @@ is potentially useful in debugging}
 }
 \value{
 The text sent to \code{STDOUT} and \code{STDERR}.
-  It will create the files with names
-  \code{output_log_filename}, \code{output_trees_filenames}
-  and \code{output_state_filenames}
+  It will create the file with name \code{output_state_filenames}
 }
 \description{
 Run BEAST2
@@ -78,24 +80,16 @@ library(testthat)
 
 if (is_beast2_installed() && is_on_ci()) {
 
-  output_log_filename <- tempfile(fileext = ".log")
-  output_trees_filenames <- tempfile(fileext = ".trees")
   output_state_filename <- tempfile(fileext = ".xml.state")
 
-  expect_false(file.exists(output_log_filename))
-  expect_false(file.exists(output_trees_filenames))
   expect_false(file.exists(output_state_filename))
 
   output <- run_beast2(
     input_filename = get_beastier_path("2_4.xml"),
-    output_log_filename = output_log_filename,
-    output_trees_filenames = output_trees_filenames,
     output_state_filename = output_state_filename
   )
 
   expect_true(length(output) > 40)
-  expect_true(file.exists(output_log_filename))
-  expect_true(file.exists(output_trees_filenames))
   expect_true(file.exists(output_state_filename))
 }
 }

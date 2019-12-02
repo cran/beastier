@@ -3,6 +3,7 @@ AppVeyor
 BEAUti
 codecov
 Codecov
+cyclomatic
 DOI
 Els
 Etienne
@@ -12,12 +13,15 @@ http
 io
 JC
 macOS
+MCMC
+MCMC's
 Neotropical
 Norambuena
 phylogenies
 Rampal
 Richèl
 Schmirl
+subfolder
 ropensci
 rOpenSci
 www

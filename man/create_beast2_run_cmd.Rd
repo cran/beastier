@@ -10,7 +10,9 @@ create_beast2_run_cmd(input_filename, output_state_filename,
 }
 \arguments{
 \item{input_filename}{the name of a BEAST2 input XML file.
-This file usually has an \code{.xml} extension.}
+This file usually has an \code{.xml} extension.
+Use \link{create_temp_input_filename} to create a temporary
+filename with that extension.}
 
 \item{output_state_filename}{name of the BEAST2 output file that
 stores the state
@@ -26,13 +28,13 @@ Use \link{NA} to use the BEAST2 default of 1.}
 \item{use_beagle}{use BEAGLE if present}
 
 \item{overwrite}{if TRUE: overwrite the \code{.log}
- and \code{.trees} files if one of these exists.
- If FALSE, BEAST2 will not be started if
- \itemize{
-   \item{the \code{.log} file exists}
-   \item{the \code{.trees} files exist}
-   \item{the \code{.log} file created by BEAST2 exists}
-   \item{the \code{.trees} files created by BEAST2 exist}
+and \code{.trees} files if one of these exists.
+If FALSE, BEAST2 will not be started if
+\itemize{
+  \item{the \code{.log} file exists}
+  \item{the \code{.trees} files exist}
+  \item{the \code{.log} file created by BEAST2 exists}
+  \item{the \code{.trees} files created by BEAST2 exist}
 }}
 
 \item{beast2_path}{name of either a BEAST2 binary file
@@ -58,7 +60,7 @@ Creates the terminal command to run BEAST2
       output_state_filename = "output.xml.state",
       beast2_path = get_default_beast2_jar_path()
     )
-    testit::assert(cmds[2] == "-jar")
+    testit::assert(cmds[2] == "-cp")
   }
 }
 \author{

@@ -9,7 +9,7 @@
 #'     cmds <- create_beast2_validate_cmd(
 #'       input_filename = "input.xml"
 #'     )
-#'     testit::assert(cmds[2] == "-jar")
+#'     testit::assert(cmds[2] == "-cp")
 #'   }
 #' @author Richèl J.C. Bilderbeek
 #' @export
@@ -17,13 +17,13 @@ create_beast2_validate_cmd <- function(
   input_filename,
   beast2_path = get_default_beast2_path()
 ) {
-  if (is_jar_path(beast2_path)) {
+  if (beastier::is_jar_path(beast2_path)) {
     create_beast2_validate_cmd_jar(
       input_filename = input_filename,
       beast2_jar_path = beast2_path
     )
   } else {
-    testit::assert(is_bin_path(beast2_path)) # nolint internal function
+    testit::assert(beastier::is_bin_path(beast2_path))
     create_beast2_validate_cmd_bin(
       input_filename = input_filename,
       beast2_bin_path = beast2_path
@@ -32,7 +32,7 @@ create_beast2_validate_cmd <- function(
 }
 
 #' Creates the terminal command to validate a BEAST2 input file
-#' using a call to the \code{beast.jar} file
+#' using a call to the \code{launcher.jar} file
 #' @inheritParams default_params_doc
 #' @return a character vector, of which the first element
 #'   is the command (\code{java}, in this case),
@@ -43,8 +43,8 @@ create_beast2_validate_cmd <- function(
 #'     cmds <- create_beast2_validate_cmd_jar(
 #'       input_filename = "input.xml"
 #'     )
-#'     testit::assert(length(cmds) == 5)
-#'     testit::assert(cmds[2] == "-jar")
+#'     testit::assert(length(cmds) == 6)
+#'     testit::assert(cmds[2] == "-cp")
 #'   }
 #' @author Richèl J.C. Bilderbeek
 #' @export
@@ -52,21 +52,22 @@ create_beast2_validate_cmd_jar <- function(
   input_filename,
   beast2_jar_path = get_default_beast2_jar_path()
 ) {
-  testit::assert(file.exists(beast2_jar_path))
-  testit::assert(is_jar_path(beast2_jar_path)) # nolint internal function
+  beautier::check_file_exists(beast2_jar_path, "beast2_jar_path")
+  testit::assert(beastier::is_jar_path(beast2_jar_path))
   cmds <- c(
     get_default_java_path(),
-    "-jar",
+    "-cp",
     paste0("\"", beast2_jar_path, "\""),
+    get_beast2_main_class_name(), # nolint beastier function
     "-validate",
     paste0("\"", input_filename, "\"")
   )
-  testit::assert(file.exists(cmds[1]))
+  beautier::check_file_exists(cmds[1], "cmds[1]")
   cmds
 }
 
 #' Creates the terminal command to validate a BEAST2 input file
-#' using a call to the \code{beast.jar} file
+#' using a call to the \code{launcher.jar} file
 #' @inheritParams default_params_doc
 #' @return a character vector, of which the first element
 #'   is the command (\code{java}, in this case),
@@ -86,13 +87,13 @@ create_beast2_validate_cmd_bin <- function(
   input_filename,
   beast2_bin_path = get_default_beast2_bin_path()
 ) {
-  testit::assert(file.exists(beast2_bin_path))
-  testit::assert(is_bin_path(beast2_bin_path)) # nolint internal function
+  beautier::check_file_exists(beast2_bin_path, "beast2_bin_path")
+  testit::assert(beastier::is_bin_path(beast2_bin_path))
   cmds <- c(
     beast2_bin_path,
     "-validate",
     input_filename
   )
-  testit::assert(file.exists(cmds[1]))
+  beautier::check_file_exists(cmds[1], "cmds[1]")
   cmds
 }

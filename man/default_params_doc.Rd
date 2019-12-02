@@ -5,7 +5,8 @@
 \title{This function does nothing. It is intended to inherit is parameters'
 documentation.}
 \usage{
-default_params_doc(beast2_bin_path, beast2_jar_path, beast2_options,
+default_params_doc(beast2_bin_path, beast2_folder,
+  beast2_internal_filenames, beast2_jar_path, beast2_options,
   beast2_optionses, beast2_path, beast2_working_dir, clock_model,
   clock_models, crown_age, crown_ages, fasta_filename, fasta_filenames,
   fixed_crown_age, fixed_crown_ages, initial_phylogenies, input_filename,
@@ -19,6 +20,18 @@ default_params_doc(beast2_bin_path, beast2_jar_path, beast2_options,
 (usually simply \code{beast}).
 Use \link{get_default_beast2_bin_path} to get
 the default BEAST binary file's path}
+
+\item{beast2_folder}{the folder where the BEAST2 is installed.
+Note that this is not the folder where the BEAST2 executable
+is installed: the BEAST2 executable is in a subfolder.
+Use \link{get_default_beast2_folder} to get the default BEAST2
+folder.
+Use \link{get_default_beast2_bin_path} to get the full path to
+the default BEAST2 executable.}
+
+\item{beast2_internal_filenames}{a list of internally
+used BEAST2 filenames,
+as created by \link{create_beast2_internal_filenames}}
 
 \item{beast2_jar_path}{name of the BEAST2 jar file
 (usually has a \code{.jar} extension).
@@ -44,10 +57,12 @@ the default BEAST binary file's path
 Use \link{get_default_beast2_jar_path} to get
 the default BEAST jar file's path}
 
-\item{beast2_working_dir}{the folder BEAST2 will work in. This is
-an (empty) temporary folder by default. This allows to call
-BEAST2 in multiple parallel processes, as each process can have
-its own working directory}
+\item{beast2_working_dir}{a folder where BEAST2 can work in
+isolation.
+For each BEAST2 run, a new subfolder is created in that folder.
+Within this folder, BEAST2 is allowed to create all of its output files,
+without the risk of overwriting existing ones, allowing
+BEAST2 to run in multiple parallel processes.}
 
 \item{clock_model}{a \code{beautier} clock model}
 
@@ -78,7 +93,9 @@ Each one set to NA will result in BEAST2 using a random phylogeny. Else
 the phylogeny is assumed to be of class \code{ape::phylo}.}
 
 \item{input_filename}{the name of a BEAST2 input XML file.
-This file usually has an \code{.xml} extension.}
+This file usually has an \code{.xml} extension.
+Use \link{create_temp_input_filename} to create a temporary
+filename with that extension.}
 
 \item{mcmc}{one \code{beautier} MCMC}
 
@@ -97,7 +114,9 @@ function. BEAST2 uses this file as input.}
 
 \item{output_log_filename}{name of the .log file to create}
 
-\item{output_state_filename}{name of the .xml.state file to create}
+\item{output_state_filename}{name of the \code{.xml.state} file to create.
+Use \link{create_temp_state_filename} to create a temporary
+filename with that extension.}
 
 \item{output_trees_filenames}{one or more names for .trees file to create.
 There will be one .trees file created per alignment in the input
@@ -106,13 +125,13 @@ filenames, else an error is thrown. Alignments are sorted alphabetically
 by their IDs}
 
 \item{overwrite}{if TRUE: overwrite the \code{.log}
- and \code{.trees} files if one of these exists.
- If FALSE, BEAST2 will not be started if
- \itemize{
-   \item{the \code{.log} file exists}
-   \item{the \code{.trees} files exist}
-   \item{the \code{.log} file created by BEAST2 exists}
-   \item{the \code{.trees} files created by BEAST2 exist}
+and \code{.trees} files if one of these exists.
+If FALSE, BEAST2 will not be started if
+\itemize{
+  \item{the \code{.log} file exists}
+  \item{the \code{.trees} files exist}
+  \item{the \code{.log} file created by BEAST2 exists}
+  \item{the \code{.trees} files created by BEAST2 exist}
 }}
 
 \item{rng_seed}{the random number generator seed of the BEAST2 run.
@@ -143,8 +162,8 @@ documentation.
 }
 \note{
 This is an internal function, so it should be marked with
-  \code{@noRd}. This is not done, as this will disallow all
-  functions to find the documentation parameters
+\code{@noRd}. This is not done, as this will disallow all
+functions to find the documentation parameters
 }
 \author{
 Richèl J.C. Bilderbeek

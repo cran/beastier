@@ -1,5 +1,6 @@
 #' Get the default BEAST2 download URL,
 #' which depends on the operating system
+#' @inheritParams default_params_doc
 #' @return the URL where BEAST2 can be downloaded from
 #' @author Richèl J.C. Bilderbeek
 #' @examples
@@ -20,14 +21,14 @@
 #'       )
 #'     )
 #'   }
-#' @noRd
+#' @export
 get_default_beast2_download_url <- function( # nolint internal functions may be long
   os = rappdirs::app_dir()$os
 ) {
-  check_os(os) # nolint internal function
-  url <- get_default_beast2_download_url_win() # nolint internal function
+  beastier::check_os(os)
+  url <- beastier::get_default_beast2_download_url_win()
   if (os != "win") {
-    url <- get_default_beast2_download_url_linux() # nolint internal function
+    url <- beastier::get_default_beast2_download_url_linux()
   }
   url
 }
@@ -35,15 +36,15 @@ get_default_beast2_download_url <- function( # nolint internal functions may be 
 #' Get the BEAST2 download URL for Linux
 #' @return the URL where BEAST2 can be downloaded from
 #' @author Richèl J.C. Bilderbeek
-#' @noRd
+#' @export
 get_default_beast2_download_url_linux <- function() { # nolint internal functions may be long
-  "https://github.com/CompEvol/beast2/releases/download/v2.5.2/BEAST.v2.5.2.Linux.tgz" # nolint URL can be long
+  "https://github.com/CompEvol/beast2/releases/download/v2.6.0/BEAST.v2.6.0.Linux.tgz" # nolint URL can be long
 }
 
 #' Get the BEAST2 download URL for Windows
 #' @return the URL where BEAST2 can be downloaded from
 #' @author Richèl J.C. Bilderbeek
-#' @noRd
+#' @export
 get_default_beast2_download_url_win <- function() { # nolint internal functions may be long
-  "https://github.com/CompEvol/beast2/releases/download/v2.5.2/BEAST.v2.5.2.Windows.zip" # nolint URL can be long
+  "https://github.com/CompEvol/beast2/releases/download/v2.6.0/BEAST.v2.6.0.Windows.zip" # nolint URL can be long
 }

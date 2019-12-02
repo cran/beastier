@@ -16,17 +16,13 @@
 check_beast2 <- function(
   beast2_path = get_default_beast2_path()
 ) {
-  is_valid <- FALSE
   tryCatch({
-    is_valid <- is_beast2_input_file(
-      filename = get_beastier_path("anthus_2_4.xml"),
+    is_beast2_input_file(
+      filename = beastier::get_beastier_path("anthus_2_4.xml"),
       beast2_path = beast2_path
     )
   }, error = function(e) {
       stop(e)
     }
   )
-  if (!is_valid) {
-    stop("BEAST2 invalid")
-  }
 }

@@ -17,22 +17,23 @@
 #' @author Richèl J.C. Bilderbeek
 #' @export
 get_default_beast2_bin_path <- function(
+  beast2_folder = get_default_beast2_folder(),
   os = rappdirs::app_dir()$os
 ) {
-  check_os(os = os) # nolint internal function
+  beastier::check_os(os)
   # Windows has uppercase folder name
   beast_foldername <- "BEAST"
   if (os != "win") {
     beast_foldername <- "beast"
   }
   beast2_bin_raw_path <- file.path(
-    rappdirs::user_data_dir(),
+    beast2_folder,
     beast_foldername,
     "BEAST.exe"
   )
   if (os != "win") {
     beast2_bin_raw_path <- file.path(
-      rappdirs::user_data_dir(),
+      beast2_folder,
       beast_foldername,
       "bin",
       "beast"

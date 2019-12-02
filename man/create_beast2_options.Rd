@@ -4,28 +4,23 @@
 \alias{create_beast2_options}
 \title{Function to create a set of BEAST2 options.}
 \usage{
-create_beast2_options(input_filename = tempfile(fileext = ".xml"),
-  output_log_filename = tempfile(fileext = ".log"),
-  output_trees_filenames = tempfile(fileext = ".trees"),
-  output_state_filename = tempfile(fileext = ".xml.state"),
-  rng_seed = NA, n_threads = NA, use_beagle = FALSE,
-  overwrite = TRUE, beast2_working_dir = tempfile(pattern =
-  "beast2_tmp_folder"), beast2_path = get_default_beast2_path(),
-  verbose = FALSE)
+create_beast2_options(input_filename = create_temp_input_filename(),
+  output_state_filename = create_temp_state_filename(), rng_seed = NA,
+  n_threads = NA, use_beagle = FALSE, overwrite = TRUE,
+  beast2_path = get_default_beast2_path(), verbose = FALSE,
+  output_log_filename = "deprecated",
+  output_trees_filenames = "deprecated",
+  beast2_working_dir = "deprecated")
 }
 \arguments{
 \item{input_filename}{the name of a BEAST2 input XML file.
-This file usually has an \code{.xml} extension.}
+This file usually has an \code{.xml} extension.
+Use \link{create_temp_input_filename} to create a temporary
+filename with that extension.}
 
-\item{output_log_filename}{name of the .log file to create}
-
-\item{output_trees_filenames}{one or more names for .trees file to create.
-There will be one .trees file created per alignment in the input
-file. The number of alignments must equal the number of .trees
-filenames, else an error is thrown. Alignments are sorted alphabetically
-by their IDs}
-
-\item{output_state_filename}{name of the .xml.state file to create}
+\item{output_state_filename}{name of the \code{.xml.state} file to create.
+Use \link{create_temp_state_filename} to create a temporary
+filename with that extension.}
 
 \item{rng_seed}{the random number generator seed of the BEAST2 run.
 Must be a non-zero positive integer value or \link{NA}.
@@ -37,19 +32,14 @@ Use \link{NA} to use the BEAST2 default of 1.}
 \item{use_beagle}{use BEAGLE if present}
 
 \item{overwrite}{if TRUE: overwrite the \code{.log}
- and \code{.trees} files if one of these exists.
- If FALSE, BEAST2 will not be started if
- \itemize{
-   \item{the \code{.log} file exists}
-   \item{the \code{.trees} files exist}
-   \item{the \code{.log} file created by BEAST2 exists}
-   \item{the \code{.trees} files created by BEAST2 exist}
+and \code{.trees} files if one of these exists.
+If FALSE, BEAST2 will not be started if
+\itemize{
+  \item{the \code{.log} file exists}
+  \item{the \code{.trees} files exist}
+  \item{the \code{.log} file created by BEAST2 exists}
+  \item{the \code{.trees} files created by BEAST2 exist}
 }}
-
-\item{beast2_working_dir}{the folder BEAST2 will work in. This is
-an (empty) temporary folder by default. This allows to call
-BEAST2 in multiple parallel processes, as each process can have
-its own working directory}
 
 \item{beast2_path}{name of either a BEAST2 binary file
 (usually simply \code{beast})
@@ -62,6 +52,21 @@ the default BEAST jar file's path}
 
 \item{verbose}{if TRUE, additional information is displayed, that
 is potentially useful in debugging}
+
+\item{output_log_filename}{name of the .log file to create}
+
+\item{output_trees_filenames}{one or more names for .trees file to create.
+There will be one .trees file created per alignment in the input
+file. The number of alignments must equal the number of .trees
+filenames, else an error is thrown. Alignments are sorted alphabetically
+by their IDs}
+
+\item{beast2_working_dir}{a folder where BEAST2 can work in
+isolation.
+For each BEAST2 run, a new subfolder is created in that folder.
+Within this folder, BEAST2 is allowed to create all of its output files,
+without the risk of overwriting existing ones, allowing
+BEAST2 to run in multiple parallel processes.}
 }
 \value{
 a BEAST2 options structure
@@ -70,22 +75,20 @@ a BEAST2 options structure
 These BEAST2 options are the R equivalent of the command-line options.
 }
 \examples{
-  library(testthat)
+library(testthat)
 
-  beast2_options <- create_beast2_options()
+beast2_options <- create_beast2_options()
 
-  expect_true("input_filename" \%in\% names(beast2_options))
-  expect_true("output_log_filename" \%in\% names(beast2_options))
-  expect_true("output_trees_filenames" \%in\% names(beast2_options))
-  expect_true("output_state_filename" \%in\% names(beast2_options))
-  expect_true("rng_seed" \%in\% names(beast2_options))
-  expect_true("n_threads" \%in\% names(beast2_options))
-  expect_true("use_beagle" \%in\% names(beast2_options))
-  expect_true("overwrite" \%in\% names(beast2_options))
-  expect_true("beast2_path" \%in\% names(beast2_options))
-  expect_true("verbose" \%in\% names(beast2_options))
+expect_true("input_filename" \%in\% names(beast2_options))
+expect_true("output_state_filename" \%in\% names(beast2_options))
+expect_true("rng_seed" \%in\% names(beast2_options))
+expect_true("n_threads" \%in\% names(beast2_options))
+expect_true("use_beagle" \%in\% names(beast2_options))
+expect_true("overwrite" \%in\% names(beast2_options))
+expect_true("beast2_path" \%in\% names(beast2_options))
+expect_true("verbose" \%in\% names(beast2_options))
 
-  expect_silent(check_beast2_options(beast2_options))
+expect_silent(check_beast2_options(beast2_options))
 }
 \author{
 Richèl J.C. Bilderbeek

@@ -28,19 +28,14 @@ is_beast2_input_file <- function(
   verbose = FALSE,
   beast2_path = get_default_beast2_path()
 ) {
-  if (!file.exists(filename)) {
-    stop(
-      "'filename' must be the name of an existing file. ",
-      "Filename '", filename, "' not found"
-    )
-  }
+  beautier::check_file_exists(filename, "filename")
   if (is_win_bin_path(beast2_path)) {
-    stop("Cannot use the Windows executable BEAST2.exe in scripts")
+   stop("Cannot use the Windows executable BEAST2.exe in scripts")
   }
   if (!file.exists(beast2_path)) {
     stop(
       "'beast2_path' must be the full path ",
-      "of either 'beast' or 'beast.jar'. ",
+      "of either 'beast' or 'launcher.jar'. ",
       "Both not found at path '", beast2_path, "'"
     )
   }
@@ -52,13 +47,26 @@ is_beast2_input_file <- function(
     input_filename = filename,
     beast2_path = beast2_path
   )
-  testit::assert(file.exists(cmds[1]))
-  output <- system2(
-    cmds[1],
-    args = cmds[-1],
-    stdout = TRUE,
-    stderr = TRUE
-  )
+  beautier::check_file_exists(cmds[1], "cmds[1]")
+  output <- NA
+  if (show_warnings == TRUE) {
+    output <- system2(
+      cmds[1],
+      args = cmds[-1],
+      stdout = TRUE,
+      stderr = TRUE
+    )
+
+  } else {
+    suppressWarnings({
+      output <- system2(
+        cmds[1],
+        args = cmds[-1],
+        stdout = TRUE,
+        stderr = TRUE)
+      }
+    )
+  }
   if (verbose) {
     print(output)
   }

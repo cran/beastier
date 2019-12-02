@@ -5,7 +5,7 @@
 #'   The name of the BEAST2 binary file will be at
 #'   \code{[folder_name]/beast/bin/beast}
 #'   The name of the BEAST2 jar file will be at
-#'   \code{[folder_name]/beast/lib/beast.jar}
+#'   \code{[folder_name]/beast/lib/launcher.jar}
 #' @return Nothing. Will install BEAST2
 #' @examples
 #'   library(testthat)
@@ -26,10 +26,12 @@ install_beast2 <- function(
   verbose = FALSE,
   os = rappdirs::app_dir()$os
 ) {
-  check_os(os = os) # nolint internal function
+  beastier::check_os(os)
+  # Windows    : BEAST/lib/beast.jar                                            # nolint
+  # Non-Windows: beast/lib/launcher.jar                                         # nolint
   jar_file_path <- file.path(folder_name, "BEAST", "lib", "beast.jar")
   if (os != "win") {
-    jar_file_path <- file.path(folder_name, "beast", "lib", "beast.jar")
+    jar_file_path <- file.path(folder_name, "beast", "lib", "launcher.jar")
   }
   if (file.exists(jar_file_path)) {
     stop("BEAST2 already installed")
@@ -38,7 +40,7 @@ install_beast2 <- function(
     print(paste("Operating system:", os))
   }
   dir.create(path = folder_name, showWarnings = FALSE, recursive = TRUE)
-  url <- get_default_beast2_download_url(os = os) # nolint internal function
+  url <- beastier::get_default_beast2_download_url(os = os) # nolint internal function
   if (verbose == TRUE) {
     print(paste("Download from URL:", url))
   }
@@ -49,7 +51,7 @@ install_beast2 <- function(
     url = url,
     destfile = local_path
   )
-  testit::assert(file.exists(local_path))
+  beautier::check_file_exists(local_path, "local_path")
   if (os != "win") {
     # Linux has a tar file
     utils::untar(
@@ -65,8 +67,8 @@ install_beast2 <- function(
       exdir = path.expand(folder_name)
     )
   }
+  beautier::check_file_exists(jar_file_path, "BEAST2 .jar path")
   if (verbose == TRUE) {
     print(paste("BEAST2 installed at", jar_file_path))
   }
-  testit::assert(file.exists(jar_file_path))
 }

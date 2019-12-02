@@ -29,7 +29,7 @@ are_beast2_input_lines <- function(
   }
   if (method == "deep") {
     filename <- tempfile()
-    save_lines(filename = filename, lines = lines) # nolint internal function
+    beastier::save_lines(filename = filename, lines = lines)
     return(
       are_beast2_input_lines_deep(
         lines = lines,
@@ -55,18 +55,25 @@ are_beast2_input_lines <- function(
 #' @author Richèl J.C. Bilderbeek
 #' @seealso Use \code{\link{is_beast2_input_file}} to check a file
 #' @examples
-#'   if (is_beast2_installed() && is_on_ci()) {
-#'     beast2_filename <- get_beastier_path("anthus_2_4.xml")
-#'     text <- readLines(beast2_filename)
-#'     testit::assert(beastier:::are_beast2_input_lines_deep(text))
-#'   }
+#' if (is_beast2_installed() && is_on_ci()) {
+#'   beast2_filename <- get_beastier_path("anthus_2_4.xml")
+#'   text <- readLines(beast2_filename)
+#'   testit::assert(are_beast2_input_lines_deep(text))
+#' }
+#' @export
 are_beast2_input_lines_deep <- function(
   lines,
   verbose = FALSE,
   beast2_path = get_default_beast2_path()
 ) {
-  filename <- tempfile()
-  save_lines(filename = filename, lines = lines) # nolint internal function
+  filename <- file.path(
+    rappdirs::user_cache_dir(),
+    basename(
+      tempfile(pattern = "beast2_", fileext = ".xml")
+    )
+  )
+  dir.create(dirname(filename), recursive = TRUE, showWarnings = FALSE)
+  beastier::save_lines(filename = filename, lines = lines)
   is_beast2_input_file(
     filename = filename,
     verbose = verbose,
@@ -81,12 +88,14 @@ are_beast2_input_lines_deep <- function(
 #' @author Richèl J.C. Bilderbeek
 #' @seealso Use \code{\link{is_beast2_input_file}} to check a file
 #' @examples
-#'   library(beastier)
-#'   beast2_filename <- get_beastier_path("anthus_2_4.xml")
-#'   text <- readLines(beast2_filename)
-#'   testit::assert(beastier:::are_beast2_input_lines_fast(text))
+#' library(testthat)
+#'
+#' beast2_filename <- get_beastier_path("anthus_2_4.xml")
+#' text <- readLines(beast2_filename)
+#' expect_true(are_beast2_input_lines_fast(text))
+#' @export
 are_beast2_input_lines_fast <- function(
   lines
 ) {
-  has_unique_ids(lines) # nolint internal function
+  beastier::has_unique_ids(lines)
 }

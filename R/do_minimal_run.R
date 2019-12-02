@@ -3,9 +3,7 @@
 #' To achieve this, \link{run_beast2_from_options} is called.
 #' @inheritParams default_params_doc
 #' @return The text sent to \code{STDOUT} and \code{STDERR}.
-#'   It will create the files with names
-#'   \code{output_log_filename}, \code{output_trees_filenames}
-#'   and \code{output_state_filenames}
+#'   It will create the files with name \code{output_state_filename}
 #' @export
 #' @examples
 #'   library(testthat)
@@ -17,10 +15,17 @@
 #'   }
 #' @author Richèl J.C. Bilderbeek
 do_minimal_run <- function() {
-  run_beast2_from_options(
-    create_beast2_options(
-      input_filename = get_beastier_path("2_4.xml"),
-      rng_seed = 314
+  folder <- file.path(rappdirs::user_cache_dir(),
+    basename(
+      tempfile(pattern = "beastier_minimal_run_")
+    )
+  )
+  beastier::run_beast2_from_options(
+    beastier::create_beast2_options(
+      input_filename = beastier::get_beastier_path("2_4.xml"),
+      output_state_filename = file.path(folder, "out.xml.state"),
+      rng_seed = 314,
+      beast2_path = beastier::get_default_beast2_path()
     )
   )
 }

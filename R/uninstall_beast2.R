@@ -4,7 +4,7 @@
 #'   The name of the BEAST2 binary file will be at
 #'   \code{[folder_name]/beast/bin/beast}
 #'   The name of the BEAST2 jar file will be at
-#'   \code{[folder_name]/beast/lib/beast.jar}
+#'   \code{[folder_name]/beast/lib/launcher.jar}
 #' @author Richèl J.C. Bilderbeek
 #' @examples
 #'   library(testthat)
@@ -29,10 +29,12 @@ uninstall_beast2 <- function(
     os = os)) {
     stop("Cannot uninstall absent BEAST2 at", folder_name)
   }
-  check_os(os = os) # nolint internal function
+  beastier::check_os(os)
+  # Windows    : BEAST/lib/beast.jar                                            # nolint
+  # Non-Windows: beast/lib/launcher.jar                                         # nolint
   jar_file_path <- file.path(folder_name, "BEAST", "lib", "beast.jar")
   if (os != "win") {
-    jar_file_path <- file.path(folder_name, "beast", "lib", "beast.jar")
+    jar_file_path <- file.path(folder_name, "beast", "lib", "launcher.jar")
   }
   bin_file_path <- file.path(folder_name, "BEAST", "BEAST.exe")
   if (os != "win") {

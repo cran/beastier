@@ -5,15 +5,46 @@
 \title{This function does nothing. It is intended to inherit is parameters'
 documentation.}
 \usage{
-default_params_doc(beast2_bin_path, beast2_folder,
-  beast2_internal_filenames, beast2_jar_path, beast2_options,
-  beast2_optionses, beast2_path, beast2_working_dir, clock_model,
-  clock_models, crown_age, crown_ages, fasta_filename, fasta_filenames,
-  fixed_crown_age, fixed_crown_ages, initial_phylogenies, input_filename,
-  mcmc, misc_options, n_taxa, n_threads, os, output_filename,
-  output_log_filename, output_state_filename, output_trees_filenames,
-  overwrite, rng_seed, sequence_length, site_model, site_models,
-  tree_prior, tree_priors, use_beagle, verbose)
+default_params_doc(
+  beast2_bin_path,
+  beast2_folder,
+  beast2_internal_filenames,
+  beast2_jar_path,
+  beast2_options,
+  beast2_optionses,
+  beast2_path,
+  beast2_version,
+  beast2_working_dir,
+  clock_model,
+  clock_models,
+  crown_age,
+  crown_ages,
+  fasta_filename,
+  fasta_filenames,
+  fixed_crown_age,
+  fixed_crown_ages,
+  initial_phylogenies,
+  input_filename,
+  mcmc,
+  misc_options,
+  n_taxa,
+  n_threads,
+  os,
+  output_filename,
+  output_log_filename,
+  output_state_filename,
+  output_trees_filenames,
+  overwrite,
+  rename_fun,
+  rng_seed,
+  sequence_length,
+  site_model,
+  site_models,
+  tree_prior,
+  tree_priors,
+  use_beagle,
+  verbose
+)
 }
 \arguments{
 \item{beast2_bin_path}{name of the BEAST2 binary file
@@ -56,6 +87,10 @@ Use \link{get_default_beast2_bin_path} to get
 the default BEAST binary file's path
 Use \link{get_default_beast2_jar_path} to get
 the default BEAST jar file's path}
+
+\item{beast2_version}{the version of BEAST2. By
+default, this is the version as returned by
+\link{get_default_beast2_version}}
 
 \item{beast2_working_dir}{a folder where BEAST2 can work in
 isolation.
@@ -132,6 +167,24 @@ If FALSE, BEAST2 will not be started if
   \item{the \code{.trees} files exist}
   \item{the \code{.log} file created by BEAST2 exists}
   \item{the \code{.trees} files created by BEAST2 exist}
+}}
+
+\item{rename_fun}{a function to rename a filename,
+as can be checked by \link{check_rename_fun}. This function should
+have one argument, which will be a filename or \link{NA}. The
+function should \link{return} one filename (when passed one filename) or
+one \link{NA} (when passed one \link{NA}).
+Example rename functions are:
+\itemize{
+  \item \link[beautier]{get_remove_dir_fun} get a function
+    that removes the directory
+    paths from the filenames, in effect turning these into local files
+  \item \link[beautier]{get_replace_dir_fun} get a function
+    that replaces the directory
+    paths from the filenames
+  \item \link[beautier]{get_remove_hex_fun} get a function that
+    removes the hex string from filenames.
+    For example, \code{tracelog_82c1a522040.log} becomes \code{tracelog.log}
 }}
 
 \item{rng_seed}{the random number generator seed of the BEAST2 run.

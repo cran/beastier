@@ -34,6 +34,9 @@
 #' the default BEAST binary file's path
 #' Use \link{get_default_beast2_jar_path} to get
 #' the default BEAST jar file's path
+#' @param beast2_version the version of BEAST2. By
+#' default, this is the version as returned by
+#' \link{get_default_beast2_version}
 #' @param beast2_working_dir a folder where BEAST2 can work in
 #' isolation.
 #' For each BEAST2 run, a new subfolder is created in that folder.
@@ -90,6 +93,23 @@
 #'   \item{the \code{.log} file created by BEAST2 exists}
 #'   \item{the \code{.trees} files created by BEAST2 exist}
 #' }
+#' @param rename_fun a function to rename a filename,
+#' as can be checked by \link{check_rename_fun}. This function should
+#' have one argument, which will be a filename or \link{NA}. The
+#' function should \link{return} one filename (when passed one filename) or
+#' one \link{NA} (when passed one \link{NA}).
+#' Example rename functions are:
+#' \itemize{
+#'   \item \link[beautier]{get_remove_dir_fun} get a function
+#'     that removes the directory
+#'     paths from the filenames, in effect turning these into local files
+#'   \item \link[beautier]{get_replace_dir_fun} get a function
+#'     that replaces the directory
+#'     paths from the filenames
+#'   \item \link[beautier]{get_remove_hex_fun} get a function that
+#'     removes the hex string from filenames.
+#'     For example, \code{tracelog_82c1a522040.log} becomes \code{tracelog.log}
+#' }
 #' @param rng_seed the random number generator seed of the BEAST2 run.
 #' Must be a non-zero positive integer value or \link{NA}.
 #' If \code{rng_seed} is \link{NA}, BEAST2 will pick a random seed
@@ -113,6 +133,7 @@ default_params_doc <- function(
   beast2_jar_path,
   beast2_options, beast2_optionses,
   beast2_path,
+  beast2_version,
   beast2_working_dir,
   clock_model, clock_models,
   crown_age, crown_ages,
@@ -131,6 +152,7 @@ default_params_doc <- function(
   output_state_filename,
   output_trees_filenames,
   overwrite,
+  rename_fun,
   rng_seed,
   sequence_length,
   site_model, site_models,

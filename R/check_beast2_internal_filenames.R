@@ -30,9 +30,15 @@
 check_beast2_internal_filenames <- function( # nolint indeed a long function, which is fine for internal functions
   beast2_internal_filenames
 ) {
-  check_beast2_internal_filenames_names(beast2_internal_filenames) # nolint beastier function
-  check_beast2_internal_filenames_data_types(beast2_internal_filenames) # nolint beastier function
-  check_beast2_internal_filenames_filenames_differ(beast2_internal_filenames) # nolint beastier function
+  beastier::check_beast2_internal_filenames_names(
+    beast2_internal_filenames
+  )
+  beastier::check_beast2_internal_filenames_data_types(
+    beast2_internal_filenames
+  )
+  beastier::check_beast2_internal_filenames_filenames_differ(
+    beast2_internal_filenames
+  )
 }
 
 #' Check if the \code{beast2_internal_filenames}, which is a list,
@@ -44,7 +50,7 @@ check_beast2_internal_filenames <- function( # nolint indeed a long function, wh
 #' @seealso Use \link{check_beast2_internal_filenames} to check
 #'   the entire \code{beast2_internal_filenames} object
 #' @author Richèl J.C. Bilderbeek
-#' @noRd
+#' @export
 check_beast2_internal_filenames_names <- function( # nolint long function name indeed, which is fine for an internal function
   beast2_internal_filenames
 ) {
@@ -72,7 +78,7 @@ check_beast2_internal_filenames_names <- function( # nolint long function name i
 #' @seealso Use \link{check_beast2_internal_filenames} to check
 #'   the entire \code{beast2_internal_filenames} object
 #' @author Richèl J.C. Bilderbeek
-#' @noRd
+#' @export
 check_beast2_internal_filenames_data_types <- function( # nolint long function name indeed, which is fine for an internal function
   beast2_internal_filenames
 ) {
@@ -94,7 +100,7 @@ check_beast2_internal_filenames_data_types <- function( # nolint long function n
 #' @seealso Use \link{check_beast2_internal_filenames} to check
 #'   the entire \code{beast2_internal_filenames} object
 #' @author Richèl J.C. Bilderbeek
-#' @noRd
+#' @export
 check_beast2_internal_filenames_filenames_differ <- function( # nolint long function name indeed, which is fine for an internal function
   beast2_internal_filenames
 ) {

@@ -44,7 +44,7 @@ run_beast2_from_options <- function(
   ##############################################################################
   beastier::check_input_filename(bifs$input_filename_full)
   beastier::check_beast2_path(beast2_options$beast2_path)
-  check_beast2_options_do_not_overwrite_existing_files( # nolint beastier function
+  beastier::check_beast2_options_do_not_overwrite_existing_files(
     beast2_options = beast2_options,
     beast2_internal_filenames = bifs
   )
@@ -67,8 +67,8 @@ run_beast2_from_options <- function(
   testit::assert(length(beast2_options$beast2_path) == 1)
 
   cmd <- beastier::create_beast2_run_cmd(
-    input_filename = bifs$input_filename_full,
-    output_state_filename = bifs$output_state_filename_full,
+    input_filename = path.expand(bifs$input_filename_full),
+    output_state_filename = path.expand(bifs$output_state_filename_full),
     rng_seed = beast2_options$rng_seed,
     n_threads = beast2_options$n_threads,
     use_beagle = beast2_options$use_beagle,
@@ -96,25 +96,28 @@ run_beast2_from_options <- function(
     stdout = TRUE,
     stderr = TRUE
   )
-  if (length(output) == 1) {
-    stop(
+  # If the output is only 1 line, this will probably be an error message
+  testthat::expect_true(
+    length(output) != 1,
+    info = paste0(
       "Command '", paste0(cmd, collapse = " "), "' failed ",
       "with error '", output, "'"
     )
-  }
+  )
 
   ##############################################################################
   # The files as created by BEAST2
   ##############################################################################
-  if (!file.exists(bifs$output_state_filename_full)) {
-    stop(
+  testthat::expect_true(
+    file.exists(bifs$output_state_filename_full),
+    info = paste0(
       "BEAST2 state file not created. \n",
       "Relative path, from 'beast2_options': '",
         beast2_options$output_state_filename, "'\n",
       "Full path: '", bifs$output_state_filename_full, "'\n",
       "Maybe no permission to write at that location?"
     )
-  }
+  )
 
   output
 }

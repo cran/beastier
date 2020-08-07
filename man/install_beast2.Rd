@@ -2,10 +2,17 @@
 % Please edit documentation in R/install_beast2.R
 \name{install_beast2}
 \alias{install_beast2}
-\title{Install BEAST2}
+\title{Install BEAST2
+Installs BEAST2 of the default
+version (see \link{get_default_beast2_version}), but another version
+can also be specified}
 \usage{
-install_beast2(folder_name = rappdirs::user_data_dir(),
-  verbose = FALSE, os = rappdirs::app_dir()$os)
+install_beast2(
+  folder_name = rappdirs::user_data_dir(),
+  beast2_version = beastier::get_default_beast2_version(),
+  verbose = FALSE,
+  os = rappdirs::app_dir()$os
+)
 }
 \arguments{
 \item{folder_name}{name of the folder where the BEAST2 files will
@@ -14,6 +21,10 @@ The name of the BEAST2 binary file will be at
 \code{[folder_name]/beast/bin/beast}
 The name of the BEAST2 jar file will be at
 \code{[folder_name]/beast/lib/launcher.jar}}
+
+\item{beast2_version}{the version of BEAST2. By
+default, this is the version as returned by
+\link{get_default_beast2_version}}
 
 \item{verbose}{if TRUE, additional information is displayed, that
 is potentially useful in debugging}
@@ -26,19 +37,14 @@ Nothing. Will install BEAST2
 }
 \description{
 Install BEAST2
+Installs BEAST2 of the default
+version (see \link{get_default_beast2_version}), but another version
+can also be specified
 }
 \examples{
-  library(testthat)
-
-  if (is_on_ci()) {
-
-    if (!is_beast2_installed()) {
-      install_beast2()
-    }
-    expect_true(file.exists(get_default_beast2_path()))
-    expect_true(file.exists(get_default_beast2_bin_path()))
-    expect_true(file.exists(get_default_beast2_jar_path()))
-  }
+\dontrun{
+  install_beast2()
+}
 }
 \author{
 Richèl J.C. Bilderbeek

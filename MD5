@@ -1,4 +1,4 @@
-747079439c6127b209f905da1853ac60 *DESCRIPTION
+eb174599ed659d4811766da5d0f716e8 *DESCRIPTION
 196d4e24d22bf8281373522bd46841dc *NAMESPACE
 1408d9725cbbd947db3e5f1f1547d4e2 *R/are_beast2_input_lines.R
 07e522ed885e675b1069fca4f463d6c8 *R/are_identical_alignments.R
@@ -39,7 +39,7 @@ bbb607cebc98c74d0be46ca69c246c63 *R/get_beast2_main_class_name.R
 ba59dbd9bd3bf634e0f369d0cd89bf80 *R/get_default_beast2_bin_path.R
 53aa4602d3704a63ee3dea4c48096c4f *R/get_default_beast2_download_url.R
 a2e617ab0dae7dbd6a8e68cd900a6c5c *R/get_default_beast2_folder.R
-ac9249e822ab24742922c3658e230837 *R/get_default_beast2_jar_path.R
+df7e641cabc28a5e2f241835b2e55f0e *R/get_default_beast2_jar_path.R
 1d6772291421524e6092f9beec74e653 *R/get_default_beast2_path.R
 d015d5a062572175b0d35d261eabb75e *R/get_default_beast2_version.R
 96985a5ac7e438cce1b39aa6501b1f26 *R/get_default_java_path.R
@@ -50,9 +50,9 @@ a08f6f49471d12f10ab686ad41336f07 *R/get_path.R
 e46159592b5fad1a9d6ab952584ffdea *R/get_trees_filenames.R
 ad59caa9a294d511c7e2f4e53226cba5 *R/gives_beast2_warning.R
 2c960c558826ff9a88d21d6995b8ae36 *R/has_unique_ids.R
-2ef4a54aa6ecaa1b0d264c68e46a4154 *R/install_beast2.R
+bd8f73f5c27bd103f342546eb607fb53 *R/install_beast2.R
 5faee41cf340b076cf1d4e7216931db0 *R/is_alignment.R
-ebd7b79b71721c2aad58168bf841b8cc *R/is_beast2_input_file.R
+5b8de55b333dec057a479e0265625a36 *R/is_beast2_input_file.R
 83d1ed711c0c89d4ffa0a911b44cba1a *R/is_beast2_installed.R
 23b0a94e3ae1757b81d271b681aba0cf *R/is_bin_path.R
 4c1e058e045285f709e2dc3df5fd09ce *R/is_jar_path.R
@@ -65,7 +65,7 @@ a0a5611dd2016663bff2184475530411 *R/run_beast2.R
 c79ffd8df011370bdbb92e09d433fd4e *R/run_beast2_from_options.R
 49a0e59330e9b487b4e11d4b40ecbc48 *R/save_lines.R
 3cfef14ec72d624446aebcc87377b4b0 *R/save_nexus_as_fasta.R
-2d84393ba3a30f1c97d44717a65afeff *R/uninstall_beast2.R
+f173fe86266d6be30135e45e88adf2c7 *R/uninstall_beast2.R
 2c48f049a80164f86faaec7b39ed0f9b *R/update_beastier.R
 9a40f2796d6b301aeb125cadf948a0de *R/upgrade_beast2.R
 2fc53baa82648fdf69caab43842884c7 *build/vignette.rds
@@ -73,7 +73,7 @@ c79ffd8df011370bdbb92e09d433fd4e *R/run_beast2_from_options.R
 7319a46eb16b89f8cd5ba1a05cd63f45 *inst/WORDLIST
 61987cfa13b217b2a1ca2816156ff19f *inst/doc/demo.R
 0628d2da61ef30ea7fc8beba876e5e5b *inst/doc/demo.Rmd
-201c4b0a5323447dc83d7baf3f185daf *inst/doc/demo.html
+2846aa054167845c629de74fab0ed9f9 *inst/doc/demo.html
 59dc5020cc76a70d138c1465d93c5b12 *inst/extdata/2_4.xml
 69ae9f49cd0d6f81d75e6a10d284fd15 *inst/extdata/README.md
 0f10b2e8a0c32ae1593678977e71d909 *inst/extdata/anthus_15_15.xml
@@ -150,7 +150,7 @@ d52b41a14208ca3529f672d934497242 *man/get_default_beast2_download_url.Rd
 4dad387ad43f0e926691b99340de744b *man/get_default_beast2_download_url_linux.Rd
 ba10b92e1757f725204383c82ea2f1c4 *man/get_default_beast2_download_url_win.Rd
 610bfb7738454cf59d34a89dd7d75f0c *man/get_default_beast2_folder.Rd
-fbdc094dca60c94e2cee1cc8bfab8b76 *man/get_default_beast2_jar_path.Rd
+2f2a80070613f2e955df299a95d1e2b3 *man/get_default_beast2_jar_path.Rd
 47e92a993c2e39e49845f8dd0df011ba *man/get_default_beast2_path.Rd
 18137cc85d3ed3a5ebe146d9c41d3723 *man/get_default_beast2_version.Rd
 8a2d89c99fcea1f70f201fb7a5c3fa04 *man/get_default_java_path.Rd
@@ -176,7 +176,7 @@ f95e2fe07b856d18b618ccea5d968c4c *man/run_beast2.Rd
 3f59d386690dcfff5cc352372a0fff9c *man/run_beast2_from_options.Rd
 dffed434bb633e0fd59a912b21535a4c *man/save_lines.Rd
 a6ebcdff48e0e2ece773481ca367e00e *man/save_nexus_as_fasta.Rd
-c20c54eb11cfe1ae43a27940cfd80642 *man/uninstall_beast2.Rd
+c7bf19f1ea69a70619a0269436a2b519 *man/uninstall_beast2.Rd
 94e1539756bcca2f027d2151755d391e *man/update_beastier.Rd
 3e9601397666160685f112fc848fa12c *man/upgrade_beast2.Rd
 57002b68e0eb59e211c93d40911ba46e *vignettes/beastier_logo.png

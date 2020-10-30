@@ -42,6 +42,7 @@ install_beast2 <- function(
     os = os
   )
   if (verbose == TRUE) {
+    print(paste0("Installing BEAST2 at '", folder_name, "'"))
     print(paste("Download from URL:", url))
   }
   # archive_filename is a .tar.gz for Linux and a .zip for Windows
@@ -49,7 +50,8 @@ install_beast2 <- function(
   local_path <- file.path(folder_name, archive_filename)
   utils::download.file(
     url = url,
-    destfile = local_path
+    destfile = local_path,
+    quiet = !verbose
   )
   beautier::check_file_exists(local_path, "local_path")
 

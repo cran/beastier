@@ -27,11 +27,11 @@ if (is_beast2_installed()) {
 
 ## -----------------------------------------------------------------------------
 if (is_beast2_installed()) {
-  expect_true(file.exists(beast2_options$output_state_filename))
+  print(output)
 }
 
 ## -----------------------------------------------------------------------------
 if (is_beast2_installed()) {
-  print(output)
+  expect_true(file.exists(beast2_options$output_state_filename))
 }
 

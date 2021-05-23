@@ -3,7 +3,7 @@
 #' @author Richèl J.C. Bilderbeek
 #' @examples
 #'   if (is_on_appveyor()) {
-#'     print("Running on AppVeyor")
+#'     message("Running on AppVeyor")
 #'   }
 #' @export
 is_on_appveyor <- function() {
@@ -14,8 +14,8 @@ is_on_appveyor <- function() {
 #' @return TRUE if run on Travis CI, FALSE otherwise
 #' @author Richèl J.C. Bilderbeek
 #' @examples
-#'   if (is_on_travis()) {
-#'     print("Running on Travis CI")
+#'   if (is_on_ci()) {
+#'     message("Running on Travis CI")
 #'   }
 #' @export
 is_on_travis <- function() {
@@ -27,7 +27,7 @@ is_on_travis <- function() {
 #' @author Richèl J.C. Bilderbeek
 #' @examples
 #'   if (is_on_ci()) {
-#'     print("Running on a continuous integration service")
+#'     message("Running on a continuous integration service")
 #'   }
 #' @export
 is_on_ci <- function() {

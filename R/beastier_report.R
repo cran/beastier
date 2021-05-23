@@ -1,7 +1,7 @@
 #' Create a \link{beastier} report, to be used when reporting bugs
 #' @export
 beastier_report <- function() {
-  kat <- function(x) cat(x, sep = "\n")
+  kat <- function(x) message(x, sep = "\n")
   kat("***********")
   kat("* beastier *")
   kat("***********")
@@ -25,8 +25,8 @@ beastier_report <- function() {
       )
     )
   }
-  kat("***************")
-  kat("* sessionInfo *")
-  kat("***************")
-  print(utils::sessionInfo())
+  kat("****************")
+  kat("* session info *")
+  kat("****************")
+  message(paste0(devtools::session_info(), collapse = "\n"))
 }

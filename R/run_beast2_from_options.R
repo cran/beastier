@@ -18,65 +18,49 @@ run_beast2_from_options <- function(
     beastier::print_beast2_options(beast2_options)
   }
 
-  if (is_win_bin_path(beast2_options$beast2_path)) {
+  if (beastier::is_win_bin_path(beast2_options$beast2_path)) {
    stop("Cannot use the Windows executable BEAST2.exe in scripts")
-  }
-  ##############################################################################
-  # Deduce the full paths of the input and output files
-  ##############################################################################
-  # Beast2 Internal FilenameS
-  bifs <- beastier::create_beast2_internal_filenames(beast2_options)
-
-  if (beast2_options$verbose) {
-    beastier::print_beast2_internal_filenames(bifs)
   }
   ##############################################################################
   # Check files
   ##############################################################################
-  beastier::check_input_filename(bifs$input_filename_full)
+  beastier::check_input_filename(beast2_options$input_filename)
   beastier::check_beast2_path(beast2_options$beast2_path)
-  beastier::check_beast2_options_do_not_overwrite_existing_files(
-    beast2_options = beast2_options,
-    beast2_internal_filenames = bifs
-  )
-
-  check_input_filename_validity( # nolint internal function
-    input_filename = bifs$input_filename_full,
-    beast2_path = beast2_options$beast2_path,
-    verbose = beast2_options$verbose
-  )
+  beastier::check_beast2_options_do_not_overwrite_existing_files(beast2_options)
+  beastier::check_input_filename_validity(beast2_options)
+  beastier::check_can_create_dir_for_state_output_file(beast2_options)
+  beastier::check_can_create_state_output_file(beast2_options)
+  beastier::check_can_create_treelog_file(beast2_options)
+  beastier::check_can_create_screenlog_file(beast2_options)
+  beastier::check_can_create_tracelog_file(beast2_options)
 
   ##############################################################################
   # Create the BEAST2 command
   ##############################################################################
-  testit::assert(length(bifs$input_filename_full) == 1)
-  testit::assert(length(beast2_options$output_state_filename) == 1)
-  testit::assert(length(beast2_options$rng_seed) == 1)
-  testit::assert(length(beast2_options$n_threads) == 1)
-  testit::assert(length(beast2_options$use_beagle) == 1)
-  testit::assert(length(beast2_options$overwrite) == 1)
-  testit::assert(length(beast2_options$beast2_path) == 1)
-
-  cmd <- beastier::create_beast2_run_cmd(
-    input_filename = path.expand(bifs$input_filename_full),
-    output_state_filename = path.expand(bifs$output_state_filename_full),
-    rng_seed = beast2_options$rng_seed,
-    n_threads = beast2_options$n_threads,
-    use_beagle = beast2_options$use_beagle,
-    overwrite = beast2_options$overwrite,
-    beast2_path = beast2_options$beast2_path
+  cmd <- beastier::create_beast2_run_cmd_from_options(
+    beast2_options = beast2_options
   )
 
-  if (beast2_options$verbose == TRUE) {
-    print(paste("cmd:", paste0(cmd, collapse = " ")))
+  if (beast2_options$verbose) {
+    message(paste("cmd:", paste0(cmd, collapse = " ")))
   }
 
   # Create the folder to hold the file, without warning if it's already present
+  output_folder <- dirname(beast2_options$output_state_filename)
+  if (beast2_options$verbose) {
+    message(
+      "Creating folder '", output_folder, "'",
+      "for BEAST2 .xml.state output file"
+    )
+  }
   dir.create(
-    path = dirname(bifs$output_state_filename_full),
+    path = output_folder,
     recursive = TRUE,
     showWarnings = FALSE
   )
+  # This assumpion should have been proven to be valid
+  # by check_can_create_dir_for_state_output_file
+  testthat::expect_true(dir.exists(output_folder))
 
   ##############################################################################
   # Run BEAST2
@@ -99,16 +83,16 @@ run_beast2_from_options <- function(
   ##############################################################################
   # The files as created by BEAST2
   ##############################################################################
+  # This is only true if there has been one sampling event in the MCMC
   testthat::expect_true(
-    file.exists(bifs$output_state_filename_full),
+    file.exists(beast2_options$output_state_filename),
     info = paste0(
       "BEAST2 state file not created. \n",
-      "Relative path, from 'beast2_options': '",
+      "Command '", paste0(cmd, collapse = " "), "' failed. ",
+      "'beast2_options$output_state_filename': '",
         beast2_options$output_state_filename, "'\n",
-      "Full path: '", bifs$output_state_filename_full, "'\n",
       "Maybe no permission to write at that location?"
     )
   )
-
   output
 }

@@ -54,11 +54,19 @@ expect_false(file.exists(beast2_options$output_state_filename))
 ```
 
 We can run `beastier` now, if BEAST2 is installed. Because BEAST2 needs
-to be installed by the user, this vignette checks if it is installed:
+to be installed by the user, this vignette checks if it is installed in every step:
 
 ```{r}
 if (is_beast2_installed()) {
   output <- run_beast2_from_options(beast2_options)
+}
+```
+
+If `beastier` has run BEAST2, the BEAST2 output can be shown:
+
+```{r}
+if (is_beast2_installed()) {
+  print(output)
 }
 ```
 
@@ -70,10 +78,4 @@ if (is_beast2_installed()) {
 }
 ```
 
-If `beastier` has run BEAST2, the BEAST2 output can be shown:
-
-```{r}
-if (is_beast2_installed()) {
-  print(output)
-}
-```
+This final state can be used to continue the run.

@@ -33,5 +33,6 @@ if (is_beast2_installed()) {
 ## -----------------------------------------------------------------------------
 if (is_beast2_installed()) {
   expect_true(file.exists(beast2_options$output_state_filename))
+  file.remove(beast2_options$output_state_filename)
 }
 

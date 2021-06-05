@@ -5,10 +5,12 @@
 #' @author Richèl J.C. Bilderbeek
 #' @examples
 #' text <- c("hello", "world")
-#' filename <- tempfile(fileext = ".txt")
+#' filename <- get_beastier_tempfilename()
 #' save_lines(filename = filename, lines = text)
+#' file.remove(filename)
 #' @export
 save_lines <- function(filename, lines) {
+  dir.create(dirname(filename), showWarnings = FALSE, recursive = TRUE)
   my_file <- file(filename)
   writeLines(lines, my_file)
   close(my_file)

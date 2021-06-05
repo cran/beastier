@@ -6,6 +6,7 @@
 #'     input_filename = get_beastier_path("2_4.xml")
 #'   )
 #'   run_beast2_from_options(beast2_options)
+#'   file.remove(beast2_options$output_state_filename)
 #' }
 #' @author Richèl J.C. Bilderbeek
 #' @export
@@ -61,6 +62,7 @@ run_beast2_from_options <- function(
   # This assumpion should have been proven to be valid
   # by check_can_create_dir_for_state_output_file
   testthat::expect_true(dir.exists(output_folder))
+
 
   ##############################################################################
   # Run BEAST2

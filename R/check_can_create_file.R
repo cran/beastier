@@ -1,3 +1,5 @@
+#' Internal function
+#'
 #' Check that a file can be created at a certain path.
 #'
 #' Will \link{stop} if not. Will \link{stop} if the file already exists.
@@ -6,6 +8,10 @@
 #' @param filename file that may or may not be created
 #' @param overwrite if TRUE, if \code{filename} already exists, it
 #' will be deleted by this function
+#' @return Nothing.
+#' Will \link{stop} if a file cannot be created at a certain path.
+#' @examples
+#' check_can_create_file("my_local_file.txt")
 #' @author Richèl J.C. Bilderbeek
 #' @export
 check_can_create_file <- function(
@@ -30,6 +36,7 @@ check_can_create_file <- function(
       )
     }
   }
+  dir.create(dirname(filename), showWarnings = FALSE, recursive = TRUE)
   tryCatch(
     suppressWarnings(
       writeLines(text = "check_can_create_file testing text", con = filename)
@@ -42,6 +49,15 @@ check_can_create_file <- function(
     )
   }
   file.remove(filename)
+
+  # Go up and remove all empty sub-sub-sub-folders
+  folder_name <- dirname(filename)
+  while (length(list.files(path = folder_name)) == 0) {
+    unlink(x = folder_name, recursive = TRUE)
+    folder_name <- dirname(folder_name)
+  }
+
+
   testthat::expect_true(
     !file.exists(filename),
     info = paste0(

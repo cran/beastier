@@ -4,7 +4,22 @@
 \alias{get_default_beast2_path}
 \title{Get the default BEAST2 path}
 \usage{
-get_default_beast2_path()
+get_default_beast2_path(
+  beast2_folder = beastier::get_default_beast2_folder(),
+  os = rappdirs::app_dir()$os
+)
+}
+\arguments{
+\item{beast2_folder}{the folder where the BEAST2 is installed.
+Note that this is not the folder where the BEAST2 executable
+is installed: the BEAST2 executable is in a subfolder.
+Use \link{get_default_beast2_folder} to get the default BEAST2
+folder.
+Use \link{get_default_beast2_bin_path} to get the full path to
+the default BEAST2 executable.}
+
+\item{os}{name of the operating system,
+must be \code{unix} (Linux, Mac) or \code{win} (Windows)}
 }
 \value{
 the default BEAST2 path

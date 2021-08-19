@@ -2,9 +2,7 @@
 % Please edit documentation in R/check_can_create_tracelog_file.R
 \name{check_can_create_tracelog_file}
 \alias{check_can_create_tracelog_file}
-\title{Check if the MCMC's tracelog file can be created.
-Will \link{stop} if not.
-If the file already exists, it is assumed that a new file can be created}
+\title{Internal function to check if the MCMC's tracelog file can be created.}
 \usage{
 check_can_create_tracelog_file(beast2_options)
 }
@@ -13,8 +11,17 @@ check_can_create_tracelog_file(beast2_options)
 that are the R equivalent of the BEAST2 command-line options,
 as can be created by \link{create_beast2_options}}
 }
+\value{
+Nothing.
+Will \link{stop} if the MCMC's tracelog file is absent and cannot be created.
+}
 \description{
 Check if the MCMC's tracelog file can be created.
 Will \link{stop} if not.
-If the file already exists, it is assumed that a new file can be created
+If the tracelog file already exists,
+it is assumed that a new file can be created,
+by overwriting the existing one.
+}
+\author{
+Richèl J.C. Bilderbeek
 }

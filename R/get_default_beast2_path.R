@@ -1,4 +1,5 @@
 #' Get the default BEAST2 path
+#' @inheritParams default_params_doc
 #' @return the default BEAST2 path
 #' @seealso
 #'   Use \link{get_default_beast2_bin_path}
@@ -15,6 +16,12 @@
 #' }
 #' @author Richèl J.C. Bilderbeek
 #' @export
-get_default_beast2_path <- function() {
-  beastier::get_default_beast2_jar_path()
+get_default_beast2_path <- function(
+  beast2_folder = beastier::get_default_beast2_folder(),
+  os = rappdirs::app_dir()$os
+) {
+  beastier::get_default_beast2_jar_path(
+    beast2_folder = beast2_folder,
+    os = os
+  )
 }

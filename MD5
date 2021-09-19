@@ -1,4 +1,4 @@
-732d3b68f2e8c9e92c8a59f2ddb9edf2 *DESCRIPTION
+e90cf79104fd7397b5d2706940e6c2a1 *DESCRIPTION
 44b095ca2f7caebac143750d4b30d7e2 *NAMESPACE
 cdae93f0a10ae4b580279b8a1c1a9a47 *R/add_quotes_if_has_spaces.R
 9dd76df203e35c37da231db9e81946f0 *R/are_beast2_input_lines.R
@@ -17,7 +17,7 @@ d6b4360c7afe4e865164bfcdf7abe68c *R/check_beast2_options_do_not_overwrite_existi
 4511ffd503ca085d60614b250a32da53 *R/check_can_create_state_output_file.R
 d6da062ba8d94ba674055caeae81b336 *R/check_can_create_tracelog_file.R
 5058c3079425d0b0263bea93f0199bfb *R/check_can_create_treelog_file.R
-1524f40af1a05b2c5cb5cbeda8144575 *R/check_empty_beastier_folder.R
+236fd778fdcb1eb2cefd4f3401dd6b41 *R/check_empty_beastier_folder.R
 84360ff48108cc193f7e2d8ec4e84bc8 *R/check_input_filename.R
 a78158efd52218b78e5b883e85daedfe *R/check_n_threads.R
 05b7924372e030af705258351201fc18 *R/check_os.R
@@ -87,10 +87,10 @@ a7388b15cd01ce6cd12dc6b508d20879 *R/run_beast2_from_options.R
 19b19ebb2b040f217eb10a286c7d452d *R/upgrade_beast2.R
 ec161229d48f291b11cf2c5a8f34fc6b *build/vignette.rds
 604d69ff7d5954219736e01c41d18e48 *inst/CITATION
-572fe2bda38bc01e4c8c96be8a2d8d42 *inst/WORDLIST
+ae4d0a190a1b4d2926c9fe0c415b8700 *inst/WORDLIST
 2ea03aa4e76af0d2460b5bc4072c972e *inst/doc/demo.R
 1dbece8586f0f731ad997c4358c96cac *inst/doc/demo.Rmd
-427224ebddf59b3932e3c586706a73f3 *inst/doc/demo.html
+cd50f35897f4ed8c2ca07806ac0e3531 *inst/doc/demo.html
 59dc5020cc76a70d138c1465d93c5b12 *inst/extdata/2_4.xml
 69ae9f49cd0d6f81d75e6a10d284fd15 *inst/extdata/README.md
 0f10b2e8a0c32ae1593678977e71d909 *inst/extdata/anthus_15_15.xml

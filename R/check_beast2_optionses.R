@@ -2,12 +2,16 @@
 #'
 #' Calls \code{stop} if the BEAST2 option object is invalid
 #' @inheritParams default_params_doc
-#' @return Nothing. 
+#' @return Nothing.
 #' Will \code{stop} if the BEAST2 option object is invalid
 #' @seealso Use \link{create_beast2_options} to create a valid
 #'   BEAST2 options object
 #' @examples
-#'  check_beast2_optionses(list(create_beast2_options()))
+#' check_empty_beaustier_folders()
+#'
+#' check_beast2_optionses(list(create_beast2_options()))
+#'
+#' check_empty_beaustier_folders()
 #' @author Richèl J.C. Bilderbeek
 #' @export
 check_beast2_optionses <- function(

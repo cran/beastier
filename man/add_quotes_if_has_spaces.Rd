@@ -20,8 +20,13 @@ Does nothing if the string contains no spaces.
 This is used for filenames
 }
 \examples{
+remove_beaustier_folders()
+check_empty_beaustier_folders()
+
 add_quotes_if_has_spaces("x")
 add_quotes_if_has_spaces("a b")
+
+check_empty_beaustier_folders()
 }
 \author{
 Richèl J.C. Bilderbeek

@@ -3,6 +3,7 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
 )
+beastier::remove_beaustier_folders()
 
 ## ----load_beastier, results='hide', warning=FALSE, error=FALSE, message=FALSE----
 library(beastier)
@@ -35,4 +36,5 @@ if (is_beast2_installed()) {
   expect_true(file.exists(beast2_options$output_state_filename))
   file.remove(beast2_options$output_state_filename)
 }
+beastier::remove_beaustier_folders()
 

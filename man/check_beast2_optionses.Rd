@@ -14,14 +14,18 @@ Use of reduplicated plural to achieve difference with
 \code{beast2_options}}
 }
 \value{
-Nothing. 
+Nothing.
 Will \code{stop} if the BEAST2 option object is invalid
 }
 \description{
 Calls \code{stop} if the BEAST2 option object is invalid
 }
 \examples{
- check_beast2_optionses(list(create_beast2_options()))
+check_empty_beaustier_folders()
+
+check_beast2_optionses(list(create_beast2_options()))
+
+check_empty_beaustier_folders()
 }
 \seealso{
 Use \link{create_beast2_options} to create a valid

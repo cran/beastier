@@ -34,11 +34,14 @@ Would these lines of text, when written to a file,
   result in a valid BEAST2 input file?
 }
 \examples{
-if (is_beast2_installed() && is_on_ci()) {
+if (is_beast2_installed() && beautier::is_on_ci()) {
   beast2_filename <- get_beastier_path("anthus_2_4.xml")
   text <- readLines(beast2_filename)
   are_beast2_input_lines_deep(text)
+
+  remove_beaustier_folders()
 }
+check_empty_beaustier_folders()
 }
 \seealso{
 Use \code{\link{is_beast2_input_file}} to check a file

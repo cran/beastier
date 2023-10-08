@@ -1,10 +1,10 @@
-7f97edb526b6bf0146eb994848b04406 *DESCRIPTION
+f212665bb86d87942b5197dc08a5faa4 *DESCRIPTION
 2f4a1a615f25c9f309d8c4de6fac1e9b *NAMESPACE
 bf9ba6b3c01e1c9d57225802b4852a73 *R/add_quotes_if_has_spaces.R
 07a3ebcdc1bc24a3509d16959081ee27 *R/are_beast2_input_lines.R
 cbdc7cbd570215fa1c87c1ce61f29247 *R/are_identical_alignments.R
 ea7b4779479ff409a5074da9b14b0ab9 *R/beast2_options_to_table.R
-0f8343222a61dd3e9e154368d438fdf8 *R/beastier.R
+16941708701585030a791fdff513ca76 *R/beastier-package.R
 fe07bc040a248b061a10000079132ea1 *R/beastier_report.R
 598fb09c229cf9b71d2f4d327589eee4 *R/check_beast2.R
 45e6b555ade9b0b12f70157c01024f30 *R/check_beast2_options.R
@@ -37,7 +37,7 @@ e4405dc1b02ae9536527781d07b56f32 *R/create_beast2_tracelog_folder.R
 9eb74b60cdd1e47a24873ae522c18201 *R/create_beast2_version_cmd.R
 b800c3242c32fc396472a8cb66b99c66 *R/create_beastier_tempfolder.R
 67d869b108cfab8ce33679e7e95d4da5 *R/create_mcbette_beast2_options.R
-a56f940b99d3de64eaba7b816c573512 *R/create_random_alignment.R
+5a66fa1e34e98c4b8d921f2db499fdaf *R/create_random_alignment.R
 207dc5a6a8804be6b34b168fb8d9c761 *R/create_random_fasta.R
 b3e2228d074e27964311136a6f24d8d0 *R/create_random_phylogeny.R
 1fe112df16af41052024783ddea45030 *R/create_temp_input_filename.R
@@ -69,7 +69,7 @@ a08f6f49471d12f10ab686ad41336f07 *R/get_path.R
 bc5e748876ab6bfecdd956745d6167c1 *R/get_trees_filenames.R
 5a657757b1f65bd75f2dccb280403c30 *R/gives_beast2_warning.R
 d02abf545a28581b51842e755f38a98c *R/has_unique_ids.R
-d9965f6fb5a3f66aa9202f9cf960d4b1 *R/install_beast2.R
+10f37317b0815d4f464891fbea743135 *R/install_beast2.R
 5faee41cf340b076cf1d4e7216931db0 *R/is_alignment.R
 06699eb453a5eabfee67fa3c67f56d1f *R/is_beast2_input_file.R
 74f7417c4b791e7ecc8015958b047ce7 *R/is_beast2_installed.R
@@ -87,12 +87,12 @@ d66f8085b50cc2798d59dd74d58dfd81 *R/save_lines.R
 3048320fe0fe596d19dedbb49996ff27 *R/save_nexus_as_fasta.R
 3cffccf15ff6afec63f59003cb996603 *R/uninstall_beast2.R
 19b19ebb2b040f217eb10a286c7d452d *R/upgrade_beast2.R
-2bfbeda85feb007dccc0d4f0fe3afdbe *build/vignette.rds
-d5d08093170334ef5651f86d4f732f7f *inst/CITATION
-3575a41c8a8a39ce5bc8591a97fe5445 *inst/WORDLIST
+d4123e5df4c6d1d8192987e456861a53 *build/vignette.rds
+fbf1b7cb8e1e4bd94845c6b29b206273 *inst/CITATION
+894885c41448c74e2582733bbe627d2a *inst/WORDLIST
 fd14e86faf17da2dbd67ee14bf0757da *inst/doc/demo.R
 5ba2200b15caa67ab83af72a7af5b537 *inst/doc/demo.Rmd
-eb03144c78c16b2b09c0c102622b743a *inst/doc/demo.html
+d272aac5d444d5b87d1f967ae15add90 *inst/doc/demo.html
 59dc5020cc76a70d138c1465d93c5b12 *inst/extdata/2_4.xml
 69ae9f49cd0d6f81d75e6a10d284fd15 *inst/extdata/README.md
 0f10b2e8a0c32ae1593678977e71d909 *inst/extdata/anthus_15_15.xml
@@ -119,7 +119,7 @@ ddaf12e30f3c027c37f0ceb9c49d7062 *man/are_beast2_input_lines.Rd
 e2801b443742c38e89f80c397598b053 *man/are_beast2_input_lines_fast.Rd
 8e2402770e7727e23e878a49068bab43 *man/are_identical_alignments.Rd
 3a514e7f52613046edc7e423cbd32a80 *man/beast2_options_to_table.Rd
-2f8293badcf5e9b19aa200d472cbd9a0 *man/beastier.Rd
+20b5c1a9b72d5e7b2d3beacd1879c387 *man/beastier-package.Rd
 90a2515141ab128553833590788d3e56 *man/beastier_report.Rd
 676b712095b9d5175891e770e5628cdf *man/check_beast2.Rd
 d2c3cdccd9036a807edd58c4b9aa1588 *man/check_beast2_options.Rd
@@ -160,7 +160,7 @@ dab11972dc89bbb71425abf09a718dc0 *man/create_beast2_version_cmd_bin.Rd
 b3c50ee23ad3d728214f062f4aef20e9 *man/create_beast2_version_cmd_jar.Rd
 1348a75934d72f1402202e22e73520fa *man/create_beastier_tempfolder.Rd
 9f054aec9d521ac1964cbc2406e776d1 *man/create_mcbette_beast2_options.Rd
-e7a076ca1667197fbd96e91fbaa8d4c1 *man/create_random_alignment.Rd
+e7b5984bbc7bcfdd1de0cf5222b9e1d9 *man/create_random_alignment.Rd
 8489503da6227ad5d5558e3ac6e41ec2 *man/create_random_fasta.Rd
 bef0f9706c861aba55c8b6d5ee476026 *man/create_random_phylogeny.Rd
 810caa3ba913eee18c223d131d65f5a6 *man/create_temp_input_filename.Rd
@@ -173,7 +173,6 @@ ea189271c4aeeb3dde14ac3222051263 *man/extract_treelog_filename_from_beast2_input
 f7de71e5ff24145a37bf281e4d155cfa *man/figures/AppVeyor.png
 3f25ab37a1f6270f76c025cf6eda5421 *man/figures/Codecov.png
 b55c56f3943a394162527954ca4a3009 *man/figures/GitHubActions.png
-4f9bce317a2b82518737a7ee7381c2ec *man/figures/TravisCI.png
 57002b68e0eb59e211c93d40911ba46e *man/figures/beastier_logo.png
 37203e0325e108cb3b8904316e327d3c *man/get_alignment_ids_from_xml_filename.Rd
 f1e67a5c83acebaf6880a0453f3a37d2 *man/get_beast2_example_filename.Rd
@@ -199,7 +198,7 @@ c04ee0efaa9372a7b0cd685982814354 *man/get_java_version.Rd
 81d05a11b9f38c25db0a9fc4c293b483 *man/get_trees_filenames.Rd
 bd597500b1e48b6eafd31f1f73986d06 *man/gives_beast2_warning.Rd
 2b6ef7c1ab45f3b80ba163997b3ac71b *man/has_unique_ids.Rd
-dacf9f13ea51e42467104b2ba15633bd *man/install_beast2.Rd
+f951f0b8d95212a91fc94f78d9ebf6d3 *man/install_beast2.Rd
 3a57a66697d32afaabd8212857047251 *man/is_alignment.Rd
 fb020d7922615bb0ce7d7c1669f3530c *man/is_beast2_input_file.Rd
 a03e38d5bf267cbe69d1010707cff518 *man/is_beast2_installed.Rd

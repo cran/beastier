@@ -1,4 +1,4 @@
-2f8410cd8328bff0f672f8142909694f *DESCRIPTION
+e5be741635f86fb41ccfd7b9c16223d3 *DESCRIPTION
 eb08d7dceded5601bef9c80121fa8244 *NAMESPACE
 bf9ba6b3c01e1c9d57225802b4852a73 *R/add_quotes_if_has_spaces.R
 24d9588fbe61c1e745344430be95d0fb *R/are_beast2_input_lines.R
@@ -95,7 +95,7 @@ fbf1b7cb8e1e4bd94845c6b29b206273 *inst/CITATION
 894885c41448c74e2582733bbe627d2a *inst/WORDLIST
 fd14e86faf17da2dbd67ee14bf0757da *inst/doc/demo.R
 5ba2200b15caa67ab83af72a7af5b537 *inst/doc/demo.Rmd
-393bffefcbf17bda6938e8905ca56730 *inst/doc/demo.html
+98559fedee1d52e4a99256a9c4b77fe7 *inst/doc/demo.html
 59dc5020cc76a70d138c1465d93c5b12 *inst/extdata/2_4.xml
 69ae9f49cd0d6f81d75e6a10d284fd15 *inst/extdata/README.md
 0f10b2e8a0c32ae1593678977e71d909 *inst/extdata/anthus_15_15.xml
